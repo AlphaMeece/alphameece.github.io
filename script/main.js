@@ -2,6 +2,9 @@ function d(id) {
     return document.getElementById(id);
 }
 
-$("#reveal").click(function() {
-    d("about").className = "shown"
-});
+function doStuffAfterHTMLHasDoneItsStuff() {
+    $("#reveal").click(function() {
+        d("about").className = "shown"
+    });
+}
+
