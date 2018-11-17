@@ -5,3 +5,24 @@ body {
 * {
     font-family: Calibri;
 }
+
+.hidden {
+    visibility: hidden;
+}
+
+.shown {
+    visibility: visible;
+}
+
+.mainBox {
+    width: 100%;
+}
+
+.centered {
+    text-align: center;
+}
+
+.col {
+    float: left;
+    width: 33.33%;
+}
