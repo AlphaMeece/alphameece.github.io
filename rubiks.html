@@ -154,6 +154,7 @@
             drawback();
             drawdown();
             prevCube = JSON.parse(JSON.stringify(cube))
+            if(cube == defaultCube) document.getElementById("scrambler").disabled = false;
             requestAnimationFrame(run);
         }
         
