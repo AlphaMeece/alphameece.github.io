@@ -1,0 +1,500 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .center {
+            text-align: center;
+            float: unset;
+        }
+
+        .container {
+            position: absolute;
+            left: 0px;
+            padding: 0px;
+            margin: 0px;
+            width: 100%;
+            display: block;
+        }
+
+        .col {
+            width: 49%;
+            height: 500px;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .border {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="center" id="id">Rubik's</h1>
+    <div class="container">
+        <div class="col border left center">
+            <button class="center" onclick="generate()">Generate!</button>
+            <br />
+            Scramble:&nbsp<span id="scramble"></span>
+        </div>
+        <div class="col border right center">
+            <canvas id="canvas" class="border" height="450" width="600"></canvas>
+            <br />
+            <button onclick="up(false)">U</button>
+            <button onclick="right(false)">R</button>
+            <button onclick="down(false)">D</button>
+            <button onclick="left(false)">L</button>
+            <button onclick="face(false)">F</button>
+            <button onclick="back(false)">B</button>
+            <br />
+            <button onclick="up(true)">U'</button>
+            <button onclick="right(true)">R'</button>
+            <button onclick="down(true)">D'</button>
+            <button onclick="left(true)">L'</button>
+            <button onclick="face(true)">F'</button>
+            <button onclick="back(true)">B'</button>
+        </div>
+    </div>
+    <script>
+        var c, ctx, height, width;
+
+        var tempEdge = "";
+        var tempCorner = "";
+
+        var cube = {
+            top: [
+                ["yellow","yellow","yellow"],
+                ["yellow","yellow","yellow"],
+                ["yellow","yellow","yellow"]
+            ],
+            left: [
+                ["orange","orange","orange"],
+                ["orange","orange","orange"],
+                ["orange","orange","orange"]
+            ],
+            face: [
+                ["blue","blue","blue"],
+                ["blue","blue","blue"],
+                ["blue","blue","blue"]
+            ],
+            right: [
+                ["red","red","red"],
+                ["red","red","red"],
+                ["red","red","red"]
+            ],
+            back: [
+                ["green","green","green"],
+                ["green","green","green"],
+                ["green","green","green"]
+            ],
+            down: [
+                ["white","white","white"],
+                ["white","white","white"],
+                ["white","white","white"]
+            ]
+        };
+        var algorithm = [];
+
+        var prevCube;
+
+        function run() {
+            clear();
+            drawtop();
+            drawleft();
+            drawface();
+            drawright();
+            drawback();
+            drawdown();
+            prevCube = JSON.parse(JSON.stringify(cube))
+            requestAnimationFrame(run);
+        }
+
+        function generate() {
+            var choices = ["u","r","d","l","f","b","uP","rP","dP","lP","fP","bP"]
+            for(var i = 0; i < 20; i++) {
+                algorithm.push(choices[Math.floor(Math.random()*12)]);
+            }
+            for(var i = 0; i < algorithm.length; i++) {
+                if(algorithm[i] == "u") {
+                    up(false);
+                }
+                if(algorithm[i] == "uP") {
+                    up(true);
+                }
+                if(algorithm[i] == "r") {
+                    right(false);
+                }
+                if(algorithm[i] == "rP") {
+                    right(true);
+                }
+                if(algorithm[i] == "d") {
+                    down(false);
+                }
+                if(algorithm[i] == "dP") {
+                    down(true);
+                }
+                if(algorithm[i] == "f") {
+                    face(false);
+                }
+                if(algorithm[i] == "fP") {
+                    face(true);
+                }
+                if(algorithm[i] == "b") {
+                    back(false);
+                }
+                if(algorithm[i] == "bP") {
+                    back(true);
+                }
+                if(algorithm[i] == "l") {
+                    left(false);
+                }
+                if(algorithm[i] == "lP") {
+                    left(true);
+                }
+                prevCube = JSON.parse(JSON.stringify(cube))
+            }
+            document.getElementById("scramble").innerHTML = "";
+            for(var i = 0; i < algorithm.length; i++) {
+                document.getElementById("scramble").innerHTML += algorithm[i] + " "
+            }
+        }
+
+        function regularCube() {
+            c = document.getElementById('canvas');
+            ctx = c.getContext("2d");
+            height = c.height;
+            width = c.width;
+            drawtop();
+            drawleft();
+            drawface();
+            drawright();
+            drawback();
+            drawdown();
+            run();
+        }
+
+        function clear() {
+            ctx.clearRect(0,0,width,height)
+        }
+
+        function rotate(face,i) {
+            var corner, edge;
+            if(i) {
+                corner = face[0][0];
+                face[0][0] = face[0][2];
+                face[0][2] = face[2][2];
+                face[2][2] = face[2][0];
+                face[2][0] = corner;
+            
+                edge = face[0][1];
+                face[0][1] = face[1][2];
+                face[1][2] = face[2][1];
+                face[2][1] = face[1][0];
+                face[1][0] = edge;
+            } else {
+                corner = face[0][0];
+                face[0][0] = face[2][0];
+                face[2][0] = face[2][2];
+                face[2][2] = face[0][2];
+                face[0][2] = corner;
+            
+                edge = face[0][1];
+                face[0][1] = face[1][0];
+                face[1][0] = face[2][1];
+                face[2][1] = face[1][2];
+                face[1][2] = edge;
+            }
+        }
+
+        function up(i) {
+            if(i) {
+                cube.face[0] = cube.left[0];
+                cube.left[0] = cube.back[0];
+                cube.back[0] = cube.right[0];
+                cube.right[0] = prevCube.face[0];
+            
+                rotate(cube.top,true)
+            } else {
+                cube.face[0] = cube.right[0];
+                cube.right[0] = cube.back[0];
+                cube.back[0] = cube.left[0];
+                cube.left[0] = prevCube.face[0];
+
+                rotate(cube.top,false);
+            }
+        }
+
+        function left(i) {
+            if(i) {
+                cube.face[0][0] = cube.down[0][0];
+                cube.face[1][0] = cube.down[1][0];
+                cube.face[2][0] = cube.down[2][0];
+            
+                cube.down[0][0] = cube.back[2][2];
+                cube.down[1][0] = cube.back[1][2];
+                cube.down[2][0] = cube.back[0][2];
+            
+                cube.back[2][2] = cube.top[0][0];
+                cube.back[1][2] = cube.top[1][0];
+                cube.back[0][2] = cube.top[2][0];
+            
+                cube.top[0][0] = prevCube.face[0][0];
+                cube.top[1][0] = prevCube.face[1][0];
+                cube.top[2][0] = prevCube.face[2][0];
+            
+                rotate(cube.left, true);
+            } else {
+                cube.face[0][0] = cube.top[0][0];
+                cube.face[1][0] = cube.top[1][0];
+                cube.face[2][0] = cube.top[2][0];
+            
+                cube.top[0][0] = cube.back[2][2];
+                cube.top[1][0] = cube.back[1][2];
+                cube.top[2][0] = cube.back[0][2];
+            
+                cube.back[2][2] = cube.down[0][0];
+                cube.back[1][2] = cube.down[1][0];
+                cube.back[0][2] = cube.down[2][0];
+            
+                cube.down[0][0] = prevCube.face[0][0];
+                cube.down[1][0] = prevCube.face[1][0];
+                cube.down[2][0] = prevCube.face[2][0];
+            
+                rotate(cube.left, false);
+            }
+        }
+
+        function right(i) {
+            if(i) {
+                cube.face[0][2] = cube.top[0][2];
+                cube.face[1][2] = cube.top[1][2];
+                cube.face[2][2] = cube.top[2][2];
+            
+                cube.top[0][2] = cube.back[2][0];
+                cube.top[1][2] = cube.back[1][0];
+                cube.top[2][2] = cube.back[0][0];
+            
+                cube.back[2][0] = cube.down[0][2];
+                cube.back[1][0] = cube.down[1][2];
+                cube.back[0][0] = cube.down[2][2];
+            
+                cube.down[0][2] = prevCube.face[0][2];
+                cube.down[1][2] = prevCube.face[1][2];
+                cube.down[2][2] = prevCube.face[2][2];
+            
+                rotate(cube.right, true);
+            } else {
+                cube.face[0][2] = cube.down[0][2];
+                cube.face[1][2] = cube.down[1][2];
+                cube.face[2][2] = cube.down[2][2];
+            
+                cube.down[0][2] = cube.back[2][0];
+                cube.down[1][2] = cube.back[1][0];
+                cube.down[2][2] = cube.back[0][0];
+            
+                cube.back[2][0] = cube.top[0][2];
+                cube.back[1][0] = cube.top[1][2];
+                cube.back[0][0] = cube.top[2][2];
+            
+                cube.top[0][2] = prevCube.face[0][2];
+                cube.top[1][2] = prevCube.face[1][2];
+                cube.top[2][2] = prevCube.face[2][2];
+            
+                rotate(cube.right, false);
+            }
+        }
+
+        function down(i) {
+            if(i) {
+                cube.face[2] = cube.right[2];
+                cube.right[2] = cube.back[2];
+                cube.back[2] = cube.left[2];
+                cube.left[2] = prevCube.face[2];
+
+                rotate(cube.down,true);
+            } else {
+                cube.face[2] = cube.left[2];
+                cube.left[2] = cube.back[2];
+                cube.back[2] = cube.right[2];
+                cube.right[2] = prevCube.face[2];
+            
+                rotate(cube.down,false);
+            }
+        }
+
+        function face(i) {
+            if(i) {
+                cube.top[2][0] = cube.right[0][0];
+                cube.top[2][1] = cube.right[1][0];
+                cube.top[2][2] = cube.right[2][0];
+            
+                cube.right[0][0] = cube.down[0][2];
+                cube.right[1][0] = cube.down[0][1];
+                cube.right[2][0] = cube.down[0][0];
+            
+                cube.down[0][2] = cube.left[2][2];
+                cube.down[0][1] = cube.left[1][2];
+                cube.down[0][0] = cube.left[0][2];
+            
+                cube.left[2][2] = prevCube.top[2][0];
+                cube.left[1][2] = prevCube.top[2][1];
+                cube.left[0][2] = prevCube.top[2][2];
+            
+                rotate(cube.face,true);
+            } else {
+                cube.top[2][0] = cube.left[2][2];
+                cube.top[2][1] = cube.left[1][2];
+                cube.top[2][2] = cube.left[0][2];
+            
+                cube.left[2][2] = cube.down[0][2];
+                cube.left[1][2] = cube.down[0][1];
+                cube.left[0][2] = cube.down[0][0];
+            
+                cube.down[0][2] = cube.right[0][0];
+                cube.down[0][1] = cube.right[1][0];
+                cube.down[0][0] = cube.right[2][0];
+            
+                cube.right[0][0] = prevCube.top[2][0];
+                cube.right[1][0] = prevCube.top[2][1];
+                cube.right[2][0] = prevCube.top[2][2];
+            
+                rotate(cube.face,false);
+            }
+        }
+
+        function back(i) {
+            if(i) {
+                cube.top[0][0] = cube.left[2][0];
+                cube.top[0][1] = cube.left[1][0];
+                cube.top[0][2] = cube.left[0][0];
+            
+                cube.left[2][0] = cube.down[2][2];
+                cube.left[1][0] = cube.down[2][1];
+                cube.left[0][0] = cube.down[2][0];
+            
+                cube.down[2][2] = cube.right[0][2];
+                cube.down[2][1] = cube.right[1][2];
+                cube.down[2][0] = cube.right[2][2];
+            
+                cube.right[0][2] = prevCube.top[0][0];
+                cube.right[1][2] = prevCube.top[0][1];
+                cube.right[2][2] = prevCube.top[0][2];
+            
+                rotate(cube.back,true);
+            } else {
+                cube.top[0][0] = cube.right[0][2];
+                cube.top[0][1] = cube.right[1][2];
+                cube.top[0][2] = cube.right[2][2];
+            
+                cube.right[0][2] = cube.down[2][2];
+                cube.right[1][2] = cube.down[2][1];
+                cube.right[2][2] = cube.down[2][0];
+            
+                cube.down[2][2] = cube.left[2][0];
+                cube.down[2][1] = cube.left[1][0];
+                cube.down[2][0] = cube.left[0][0];
+            
+                cube.left[2][0] = prevCube.top[0][0];
+                cube.left[1][0] = prevCube.top[0][1];
+                cube.left[0][0] = prevCube.top[0][2];
+            
+                rotate(cube.back,false);
+            }
+        }
+
+        function drawtop() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.top[y][x];
+                    ctx.rect(150 + (50 * x), 0 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        }
+
+        function drawleft() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.left[y][x];
+                    ctx.rect(0 + (50 * x), 150 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+
+        function drawface() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.face[y][x];
+                    ctx.rect(150 + (50 * x), 150 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+
+        function drawright() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.right[y][x];
+                    ctx.rect(300 + (50 * x), 150 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+                ctx.closePath();
+            }
+        }
+
+        function drawback() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.back[y][x];
+                    ctx.rect(450 + (50 * x), 150 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+
+        function drawdown() {
+            ctx.strokeStyle = "black";
+            for(var x = 0; x < 3; x++) {
+                for(var y = 0;  y < 3; y++) {
+                    ctx.beginPath();
+                    ctx.fillStyle = cube.down[y][x];
+                    ctx.rect(150 + (50 * x), 300 + (50 * y), 50, 50);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+        }
+
+        regularCube();
+    </script>
+</body>
+</html>
