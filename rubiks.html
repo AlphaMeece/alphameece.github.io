@@ -45,6 +45,8 @@
             <button class="center" id="scrambler" onclick="generate()">Generate!</button>
             <button class="center" id="fixer" onclick="makeDefault()">Reset</button>
             <br />
+            <input type="number" min="1" max="100" value="20" id="scrambleNum" />
+            <br />
             Scramble:&nbsp<span id="scramble"></span>
         </div>
         <div class="col border right center">
@@ -108,40 +110,11 @@
             ]
         };
 
-        var defaultCube = {
-            top: [
-                ["yellow","yellow","yellow"],
-                ["yellow","yellow","yellow"],
-                ["yellow","yellow","yellow"]
-            ],
-            left: [
-                ["orange","orange","orange"],
-                ["orange","orange","orange"],
-                ["orange","orange","orange"]
-            ],
-            face: [
-                ["blue","blue","blue"],
-                ["blue","blue","blue"],
-                ["blue","blue","blue"]
-            ],
-            right: [
-                ["red","red","red"],
-                ["red","red","red"],
-                ["red","red","red"]
-            ],
-            back: [
-                ["green","green","green"],
-                ["green","green","green"],
-                ["green","green","green"]
-            ],
-            down: [
-                ["white","white","white"],
-                ["white","white","white"],
-                ["white","white","white"]
-            ]
-        };
+        var defaultCube = JSON.parse(JSON.stringify(cube));
 
         var algorithm = [];
+        
+        var num;
 
         var prevCube;
 
@@ -153,14 +126,15 @@
             drawright();
             drawback();
             drawdown();
-            prevCube = JSON.parse(JSON.stringify(cube))
+            num = document.getElementById("scrambleNum").value;
+            prevCube = JSON.parse(JSON.stringify(cube));
             if(cube == defaultCube) document.getElementById("scrambler").disabled = false;
             requestAnimationFrame(run);
         }
         
         function scramble() {
             var choices = ["U","R","D","L","F","B","U'","R'","D'","L'","F'","B'"]
-            for(var i = 0; i < 20; i++) {
+            for(var i = 0; i < num; i++) {
                 algorithm.push(choices[Math.floor(Math.random()*12)]);
             }
             for(var i = 0; i < algorithm.length; i++) {
