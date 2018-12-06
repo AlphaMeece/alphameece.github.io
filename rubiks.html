@@ -269,14 +269,14 @@
             if(i) {
                 cube.face = cube.top;
                 cube.top = cube.back;
-                cube.back = cube.bottom;
-                cube.bottom = prevCube.face;
+                cube.back = cube.down;
+                cube.down = prevCube.face;
 
                 rotate(cube.left, false);
                 rotate(cube.right, true);
             } else {
-                cube.face = cube.bottom;
-                cube.bottom = cube.back;
+                cube.face = cube.down;
+                cube.down = cube.back;
                 cube.back = cube.top;
                 cube.top = prevCube.face;
 
@@ -293,7 +293,7 @@
                 cube.right = prevCube.face;
 
                 rotate(cube.top, true);
-                rotate(cube.bottom, false);
+                rotate(cube.down, false);
             } else {
                 cube.face = cube.right;
                 cube.right = cube.back;
@@ -301,7 +301,7 @@
                 cube.left = prevCube.face;
 
                 rotate(cube.top, false);
-                rotate(cube.bottom, true);
+                rotate(cube.down, true);
             }
         }
 
