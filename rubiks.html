@@ -102,6 +102,40 @@
                 ["white","white","white"]
             ]
         };
+
+        var defaultCube = {
+            top: [
+                ["yellow","yellow","yellow"],
+                ["yellow","yellow","yellow"],
+                ["yellow","yellow","yellow"]
+            ],
+            left: [
+                ["orange","orange","orange"],
+                ["orange","orange","orange"],
+                ["orange","orange","orange"]
+            ],
+            face: [
+                ["blue","blue","blue"],
+                ["blue","blue","blue"],
+                ["blue","blue","blue"]
+            ],
+            right: [
+                ["red","red","red"],
+                ["red","red","red"],
+                ["red","red","red"]
+            ],
+            back: [
+                ["green","green","green"],
+                ["green","green","green"],
+                ["green","green","green"]
+            ],
+            down: [
+                ["white","white","white"],
+                ["white","white","white"],
+                ["white","white","white"]
+            ]
+        };
+
         var algorithm = [];
 
         var prevCube;
@@ -119,6 +153,8 @@
         }
 
         function generate() {
+            document.getElementById("scramble").innerHTML = "";
+            cube = JSON.parse(JSON.stringify(defaultCube))
             var choices = ["u","r","d","l","f","b","uP","rP","dP","lP","fP","bP"]
             for(var i = 0; i < 20; i++) {
                 algorithm.push(choices[Math.floor(Math.random()*12)]);
@@ -162,7 +198,6 @@
                 }
                 prevCube = JSON.parse(JSON.stringify(cube))
             }
-            document.getElementById("scramble").innerHTML = "";
             for(var i = 0; i < algorithm.length; i++) {
                 document.getElementById("scramble").innerHTML += algorithm[i] + " "
             }
