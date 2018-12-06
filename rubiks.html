@@ -151,10 +151,8 @@
             prevCube = JSON.parse(JSON.stringify(cube))
             requestAnimationFrame(run);
         }
-
-        function generate() {
-            document.getElementById("scramble").innerHTML = "";
-            cube = JSON.parse(JSON.stringify(defaultCube))
+        
+        function scramble() {
             var choices = ["u","r","d","l","f","b","uP","rP","dP","lP","fP","bP"]
             for(var i = 0; i < 20; i++) {
                 algorithm.push(choices[Math.floor(Math.random()*12)]);
@@ -201,6 +199,16 @@
             for(var i = 0; i < algorithm.length; i++) {
                 document.getElementById("scramble").innerHTML += algorithm[i] + " "
             }
+        }
+
+        function makeDefault() {
+            document.getElementById("scramble").innerHTML = "";
+            cube = JSON.parse(JSON.stringify(defaultCube))
+        }
+
+        function generate() {
+            makeDefault();
+            scramble();
         }
 
         function regularCube() {
