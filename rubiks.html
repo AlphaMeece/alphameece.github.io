@@ -159,45 +159,45 @@
         }
         
         function scramble() {
-            var choices = ["u","r","d","l","f","b","uP","rP","dP","lP","fP","bP"]
+            var choices = ["U","R","D","L","F","B","U'","R'","D'","L'","F'","B'"]
             for(var i = 0; i < 20; i++) {
                 algorithm.push(choices[Math.floor(Math.random()*12)]);
             }
             for(var i = 0; i < algorithm.length; i++) {
-                if(algorithm[i] == "u") {
+                if(algorithm[i] == "U") {
                     up(false);
                 }
-                if(algorithm[i] == "uP") {
+                if(algorithm[i] == "U'") {
                     up(true);
                 }
-                if(algorithm[i] == "r") {
+                if(algorithm[i] == "R") {
                     right(false);
                 }
-                if(algorithm[i] == "rP") {
+                if(algorithm[i] == "R'") {
                     right(true);
                 }
-                if(algorithm[i] == "d") {
+                if(algorithm[i] == "D") {
                     down(false);
                 }
-                if(algorithm[i] == "dP") {
+                if(algorithm[i] == "D'") {
                     down(true);
                 }
-                if(algorithm[i] == "f") {
+                if(algorithm[i] == "F") {
                     face(false);
                 }
-                if(algorithm[i] == "fP") {
+                if(algorithm[i] == "F'") {
                     face(true);
                 }
-                if(algorithm[i] == "b") {
+                if(algorithm[i] == "B") {
                     back(false);
                 }
-                if(algorithm[i] == "bP") {
+                if(algorithm[i] == "B'") {
                     back(true);
                 }
-                if(algorithm[i] == "l") {
+                if(algorithm[i] == "L") {
                     left(false);
                 }
-                if(algorithm[i] == "lP") {
+                if(algorithm[i] == "L'") {
                     left(true);
                 }
                 prevCube = JSON.parse(JSON.stringify(cube))
