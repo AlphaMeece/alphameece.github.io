@@ -56,6 +56,8 @@
             <button onclick="left(false)">L</button>
             <button onclick="face(false)">F</button>
             <button onclick="back(false)">B</button>
+            <button onclick="x(false)">X</button>
+            <button onclick="y(false)">Y</button>
             <br />
             <button onclick="up(true)">U'</button>
             <button onclick="right(true)">R'</button>
@@ -63,6 +65,8 @@
             <button onclick="left(true)">L'</button>
             <button onclick="face(true)">F'</button>
             <button onclick="back(true)">B'</button>
+            <button onclick="x(true)">X'</button>
+            <button onclick="y(true)">Y'</button>
         </div>
     </div>
     <script>
@@ -258,6 +262,46 @@
                 face[1][0] = face[2][1];
                 face[2][1] = face[1][2];
                 face[1][2] = edge;
+            }
+        }
+
+        function x(i) {
+            if(i) {
+                cube.face = cube.top;
+                cube.top = cube.back;
+                cube.back = cube.bottom;
+                cube.bottom = prevCube.face;
+
+                rotate(cube.left, false);
+                rotate(cube.right, true);
+            } else {
+                cube.face = cube.bottom;
+                cube.bottom = cube.back;
+                cube.back = cube.top;
+                cube.top = prevCube.face;
+
+                rotate(cube.left, true);
+                rotate(cube.right, false);
+            }
+        }
+
+        function y(i) {
+            if(i) {
+                cube.face = cube.left;
+                cube.left = cube.back;
+                cube.back = cube.right;
+                cube.right = prevCube.face;
+
+                rotate(cube.top, true);
+                rotate(cube.bottom, false);
+            } else {
+                cube.face = cube.right;
+                cube.right = cube.back;
+                cube.back = cube.left;
+                cube.left = prevCube.face;
+
+                rotate(cube.top, false);
+                rotate(cube.bottom, true);
             }
         }
 
