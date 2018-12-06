@@ -42,7 +42,8 @@
     <h1 class="center" id="id">Rubik's</h1>
     <div class="container">
         <div class="col border left center">
-            <button class="center" onclick="generate()">Generate!</button>
+            <button class="center" id="scrambler" onclick="generate()">Generate!</button>
+            <button class="center" id="fixer" onclick="makeDefault()">Reset</button>
             <br />
             Scramble:&nbsp<span id="scramble"></span>
         </div>
@@ -204,11 +205,12 @@
         function makeDefault() {
             document.getElementById("scramble").innerHTML = "";
             cube = JSON.parse(JSON.stringify(defaultCube))
+            document.getElementById("scrambler").disabled = false;
         }
 
         function generate() {
-            makeDefault();
             scramble();
+            document.getElementById("scrambler").disabled = true;
         }
 
         function regularCube() {
