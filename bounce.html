@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bounce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <h1>I Bounce</h1>
+    <script>
+        var x = 0;
+        var y = 0;
+        var ax = Math.floor(Math.random()*10)+1;
+        var ay = Math.floor(Math.random()*10)+1;
+
+        function run() {
+            if(x < 0 || x >= screen.availWidth - window.outerWidth) ax *= -1;
+            if(y < 0 || y >= screen.availHeight - window.outerHeight) ay *= -1;
+            x += ax;
+            y += ay;
+            window.moveTo(x, y);
+
+            requestAnimationFrame(run)
+        }
+
+        run();
+    </script>
+</body>
+</html>
