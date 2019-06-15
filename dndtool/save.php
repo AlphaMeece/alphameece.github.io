@@ -5,6 +5,7 @@
         fwrite($file,$_GET["pName"]);
         fwrite($file,$_GET["cName"]);
         fclose($file);
+        echo "Done";
         ?>
     </body>
 </html>
