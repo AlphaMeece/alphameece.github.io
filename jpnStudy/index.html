@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JPN Study Tool</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body onload="load()">
+        <div id="studySets" class="studysets">
+            <a href="javascript:void(0)" class="closebutton" onclick="closeSets()">&times</a>
+        </div>
+        <span onclick="openSets()" class="openbutton">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </span>
+        <div id="main">
+            <center>
+                <h2 id="title">Hiragana(A-O)</h2>
+                <p>Click on the correct answer</p>
+                <hr>
+                <span id="question">Loading</span>
+                <span id="marks"></span>
+                <span id="check"></span>
+                <hr>
+                <button class="answerbutton" id="ans0" onclick="answer(this.innerHTML, this)">Loading</button>
+                <button class="answerbutton" id="ans1" onclick="answer(this.innerHTML, this)">Loading</button>
+                <br />
+                <button class="answerbutton" id="ans2" onclick="answer(this.innerHTML, this)">Loading</button>
+                <button class="answerbutton" id="ans3" onclick="answer(this.innerHTML, this)">Loading</button>
+                <hr>
+                <span id="unknown" class="info">Unkown: Loading</span>
+                <span id="practiced" class="info">Practiced: Loading</span>
+                <span id="known" class="info">Known: Loading</span>
+                <span id="correct" class="info">Correct: Loading/Loading (Loading%)</span>
+            </center>
+        </div>
+        <script src="sets.js"></script>
+        <script src="main.js"></script>
+    </body>
+</html>
