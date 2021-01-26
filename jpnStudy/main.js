@@ -103,9 +103,9 @@ function nextQuestion() {
     document.getElementById("check").innerHTML = "";
     let chance = Math.floor(Math.random()*101);
     let newQ;
-    if((chance < 70 && unknown.length > 0) || (practiced.length == 0 && known.length == 0)) {
+    if((chance < 80 && unknown.length > 0) || (practiced.length == 0 && known.length == 0)) {
         newQ = `0|${Math.floor(Math.random()*(unknown.length))}`
-    } else if((chance < 90 || unknown.length == 0 || known.length == 0) && practiced.length > 0) {
+    } else if((chance < 95 || unknown.length == 0 || known.length == 0) && practiced.length > 0) {
         newQ = `1|${Math.floor(Math.random()*(practiced.length))}`
     } else if(known.length > 0) {
         newQ = `2|${Math.floor(Math.random()*(known.length))}`
