@@ -4,9 +4,54 @@
         <title>JPN Study Tool</title>
         <link rel="stylesheet" href="main.css">
     </head>
-    <body onload="load()">
+    <body onload="load(); loadSavedSets();"></body>
         <div id="studySets" class="studysets">
-            <a href="javascript:void(0)" class="closebutton" onclick="closeSets()">&times</a>
+            <!--<a href="javascript:void(0)" class="addbutton" onclick="createGroup()">&#10010;</a>-->
+            <a href="javascript:void(0)" class="closebutton" onclick="closeSets()">&times;</a>
+            <div>
+                <label class="container">
+                    <input type="checkbox" onchange="changeSets(this, this.parentElement.parentElement.children[2], true)">
+                    <span class="checkmark"></span>
+                </label>
+                <div>
+                    <!--<a href="javascript:void(0)" class="deletebutton" onclick="deleteGroup(this.parentElement)">&times;</a>-->
+                    <button type="button" class="collapsible">Hiragana</button>
+                </div>
+                <div class="content">
+                    <p onclick="changeSets(this, this.innerHTML)">A-O</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ka-Ko</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ga-Go</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Sa-So</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Za-Zo</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ta-To</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Da-Do</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Na-No</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ha-Ho</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ba-Bo</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Pa-Po</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ma-Mo</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ya-Yo</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ra-Ro</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Wa,Wo,N</p>
+                </div>
+            </div>
+            <div>
+                <label class="container">
+                    <input type="checkbox" onchange="changeSets(this, this.parentElement.parentElement.children[2], true)">
+                    <span class="checkmark"></span>
+                </label>
+                <div>
+                    <!--<a href="javascript:void(0)" class="deletebutton" onclick="deleteGroup(this.parentElement)">&times;</a>-->
+                    <button type="button" class="collapsible">Greetings</button>
+                </div>
+                <div class="content">
+                    <p onclick="changeSets(this, this.innerHTML)">Hello's</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Good Bye's</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Meeting</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Leaving and Returning</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Misc.</p>
+                </div>
+            </div>
         </div>
         <span onclick="openSets()" class="openbutton">
             <div class="bar"></div>
@@ -15,18 +60,18 @@
         </span>
         <div id="main">
             <center>
-                <h2 id="title">Hiragana</h2>
+                <h2 id="title">No Selected Sets</h2>
                 <p>Click on the correct answer</p>
                 <hr>
-                <span id="question">Loading</span>
+                <span id="question">Please select a set in the top left</span>
                 <span id="marks"></span>
                 <span id="check"></span>
                 <hr>
-                <button class="answerbutton" id="ans0" onclick="answer(this.innerHTML, this)">Loading</button>
-                <button class="answerbutton" id="ans1" onclick="answer(this.innerHTML, this)">Loading</button>
+                <button class="answerbutton" id="ans0" onclick="answer(this.innerHTML, this)"></button>
+                <button class="answerbutton" id="ans1" onclick="answer(this.innerHTML, this)"></button>
                 <br />
-                <button class="answerbutton" id="ans2" onclick="answer(this.innerHTML, this)">Loading</button>
-                <button class="answerbutton" id="ans3" onclick="answer(this.innerHTML, this)">Loading</button>
+                <button class="answerbutton" id="ans2" onclick="answer(this.innerHTML, this)"></button>
+                <button class="answerbutton" id="ans3" onclick="answer(this.innerHTML, this)"></button>
                 <hr>
                 <span id="unknown" class="info">Unkown: Loading</span>
                 <span id="practiced" class="info">Practiced: Loading</span>

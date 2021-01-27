@@ -1,5 +1,5 @@
 let sets = [
-    ...baseSets
+    
 ]
 
 let question = "0|0"
@@ -18,23 +18,117 @@ let correctSpan = document.getElementById("correct");
 
 function load() {
     populate();
-    nextQuestion();
+    if(unknown.length > 0) nextQuestion();
+}
+
+function loadSavedSets() {
+
+}
+
+function createGroup() {
+
 }
 
 function populate() {
+    unknown = [];
+    practiced = [];
+    known = [];
+    totals = [];
+    correct = 0;
+    total = 0;
+    attempts = 0;
     for(let set of sets) {
         for(let q of set.terms) {
             unknown.push(q);
             totals.push(q);
         }
     }
+    document.getElementById("question").innerHTML = "Please select a set in the top left";
+    document.getElementById("ans1").innerHTML = "";
+    document.getElementById("ans2").innerHTML = "";
+    document.getElementById("ans3").innerHTML = "";
+    document.getElementById("ans0").innerHTML = "";
+    document.getElementById("marks").innerHTML = "";
+    document.getElementById("check").innerHTML = "";
     unknownSpan.innerHTML = `Unkown: ${unknown.length}`;
     practicedSpan.innerHTML = `Practiced: ${practiced.length}`;
     knownSpan.innerHTML = `Known: ${known.length}`;
     correctSpan.innerHTML = `${correct}/${total} (${total == 0 ? 0:(Math.floor(correct/total*1000)/10)}%)`
 }
 
+function changeSets(element, setChange, wholeSet = false) {
+    if(!wholeSet) {
+        let groupName = element.parentElement.parentElement.children[1].children[0].innerHTML;
+        let linkedBox = element.parentElement.parentElement.children[0].children[0];
+        if(checkSets(setChange, groupName) != -1) {
+            sets.splice(checkSets(setChange, groupName), 1);
+            element.classList.remove("toggled");
+            if(linkedBox.checked) linkedBox.checked = false;
+        } else {
+            sets.push(baseSets[getSet(setChange, groupName)]);
+            element.classList.add("toggled");
+            let shouldToggle = true;
+            for(let button of element.parentElement.children) {
+                if(!button.classList.contains("toggled")) {
+                    shouldToggle = false;
+                    break;
+                }
+            }
+            if(shouldToggle) linkedBox.checked = true;
+        }
+    } else {
+        let groupName = element.parentElement.nextElementSibling.children[0].innerHTML;
+        for(let button of setChange.children) {
+            if((element.checked && checkSets(button.innerHTML, groupName) == -1) || (!element.checked && checkSets(button.innerHTML, groupName) != -1)) button.click();
+        }
+    }
+
+    load();
+    if(totals.length <= 3 && totals.length != 0) document.getElementById("ans3").style.display = "none"
+    else if(document.getElementById("ans3").style.display == "none") document.getElementById("ans3").style.display = "inline"
+
+    if(totals.length == 2) document.getElementById("ans2").style.display = "none"
+    else if(document.getElementById("ans2").style.display == "none") document.getElementById("ans2").style.display = "inline"
+
+    let tempSets = [];
+    for(let set of sets) {
+        if(tempSets.indexOf(set["set"]) == -1) tempSets.push(set["set"])
+    }
+    document.getElementById("title").innerHTML = tempSets.length == 1 ? tempSets[0]:(tempSets.length == 0 ? "No Selected Sets":"Multiple Sets")
+}
+
+function getSet(setName, groupName) {
+    let index = -1;
+    let count = 0;
+
+    for(let set of baseSets) {
+        if(set.title == setName && set["set"] == groupName) {
+            index = count;
+            break;
+        }
+        count++;
+    }
+
+    return index;
+}
+
+function checkSets(setName, groupName) {
+    let index = -1;
+    let count = 0;
+
+    for(let set of sets) {
+        if(set.title == setName && set["set"] == groupName) {
+            index = count;
+            break;
+        }
+        count++;
+    }
+
+    return index;
+}
+
 function answer(ans, button) {
+    if(ans == "" || ans == undefined || button.style.backgroundColor == "red") return;
     let q = parseQuestion(question);
     let rightAnswer = false;
     if(ans.toLowerCase() == q[1].toLowerCase()) {
@@ -116,29 +210,31 @@ function nextQuestion() {
 
 function loadQuestion(q) {
     question = q;
-    let answers = totals.map(x => x[1]);
+    let answers = [...new Set(totals.map(x => x[1]))];
     let [curQuestion, answer] = parseQuestion(q);
+    let chosen = totals.length > 3 ? 3:(totals.length > 2 ? 2:1);
+    let totalChosen = totals.length > 3 ? 4:(totals.length > 2 ? 3:2);
     answers.splice(answers.indexOf(answer), 1);
 
     let unmappedAnswers = [answer];
     let trueAnswers = [];
-    for(let i = 0; i < 3; i++) {
+    for(let i = 0; i < chosen; i++) {
         let choice = Math.floor(Math.random()*(answers.length));
         unmappedAnswers.push(answers[choice]);
         answers.splice(choice, 1);
     }
 
-    for(let i = 0; i < 4; i++) {
+    for(let i = 0; i < totalChosen; i++) {
         let choice = Math.floor(Math.random()*(unmappedAnswers.length));
         trueAnswers.push(unmappedAnswers[choice]);
         unmappedAnswers.splice(choice, 1);
     }
 
     document.getElementById("question").innerHTML = curQuestion;
-    document.getElementById("ans1").innerHTML = trueAnswers[0];
-    document.getElementById("ans2").innerHTML = trueAnswers[1];
-    document.getElementById("ans3").innerHTML = trueAnswers[2];
-    document.getElementById("ans0").innerHTML = trueAnswers[3];
+    document.getElementById("ans0").innerHTML = trueAnswers[0];
+    document.getElementById("ans1").innerHTML = trueAnswers[1];
+    if(totals.length > 2) document.getElementById("ans2").innerHTML = trueAnswers[2];
+    if(totals.length > 3) document.getElementById("ans3").innerHTML = trueAnswers[3];
 }
 
 function parseQuestion(input) {
@@ -152,4 +248,19 @@ function openSets() {
 
 function closeSets() {
     document.getElementById("studySets").style.width = "0";
+}
+
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.parentElement.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    }
+  });
 }
