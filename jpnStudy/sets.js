@@ -194,7 +194,137 @@ let baseSets = [
             ["ごちそうさま", "Thank you for the meal(after)"],
             ["ごちそうさまでした", "Thank you for the meal(after, polite)"]
         ]
+    },{
+        "title": "Countries",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["アメリカ","America"],
+            ["イギリス","Britain"],
+            ["オーストラリア","Australia"],
+            ["かんこく","Korea"],
+            ["スウェーデン","Sweden"],
+            ["ちゅうごく","China"],
+            ["にほん","Japan"],
+        ]
+    },{
+        "title": "Majors",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["かがく","Science"],
+            ["アジアけんきゅう","Asian Studies"],
+            ["けいざい","Economics"],
+            ["こくさいかんけい","International Relations"],
+            ["コンピューター","Computer"],
+            ["じんるいがく","Anthropology"],
+            ["せいじ","Politics"],
+            ["ビジネス","Business"],
+            ["ぶんがく","Literature"],
+            ["れきし","History"],
+        ]
+    },{
+        "title": "Occupations",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["しごと","Job"],
+            ["いしゃ","Doctor"],
+            ["かいしゃいん","Office worker"],
+            ["こうこうせい","High school student"],
+            ["しゅふ","housewife"],
+            ["だいがくいんせい","Graduate student"],
+            ["だいがくせい","College student"],
+            ["べんごし","Lawyer"],
+            ["がくせい","Student"],
+            ["せんせい","Teacher"],
+        ]
+    },{
+        "title": "Family",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["おかあさん","Mother"],
+            ["おとうさん","Father"],
+            ["おねえさん","Older sister"],
+            ["おにいさん","Older brother"],
+            ["いもうと","Younger sister"],
+            ["おとうと","Younger brother"],
+        ]
+    },{
+        "title": "Suffixes",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["...ご","Language"],
+            ["...さい","Years old"],
+            ["...さん","Mr./Mrs."],
+            ["...じ","O' Clock"],
+            ["...じん","Person(Japanese Person)"],
+            ["...ねんせい","Year student(first-year student)"],
+        ]
+    },{
+        "title": "Misc.",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["あの","Um..."],
+            ["いま","Now"],
+            ["ええ","Yes"],
+            ["こうこう","High school"],
+            ["ごご","P.M."],
+            ["ごぜん","A.M."],
+            ["せんこう","Major"],
+            ["そうです","That's right"],
+            ["そうですか","Is that so?"],
+            ["だいがく","University"],
+            ["でんわ","Telephone"],
+            ["ともだち","Friend"],
+            ["なまえ","Name"],
+            ["なに/なん","What"],
+            ["はい","Yes"],
+            ["はん","Half(Half past two)"],
+            ["ばんごう","Number"],
+            ["りゅうがくせい","International Student"],
+            ["わたし","I"],
+            ["はたち","20 Years old"],
+        ]
+    },{
+        "title": "Numbers",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["ぜろ/れい","0"],
+            ["いち","1"],
+            ["に","2"],
+            ["さん","3"],
+            ["よん/し","4"],
+            ["ご","5"],
+            ["ろく","6"],
+            ["なな/しち","7"],
+            ["はち","8"],
+            ["きゅう","9"],
+            ["じゅう","10"],
+            ["ひゃく","100"],
+        ]
+    },{
+        "title": "Minutes",
+        "set": "Lesson 1 Vocab",
+        "terms": [
+            ["いっぷん","1"],
+            ["にふん","2"],
+            ["さんぷん","3"],
+            ["よんふん","4"],
+            ["ごふん","5"],
+            ["ろっぷん","6"],
+            ["ななふん","7"],
+            ["はちふん","8"],
+            ["はっぷん","8"],
+            ["きゅうふん","9"],
+            ["じゅっぷん","10"],
+            ["じっぷん","10"],
+        ]
     },
+    /*{
+        "title": "",
+        "set": "",
+        "terms": [
+            ["",""],
+        ]
+    },*/
 ]
 
 /*let groups = {
