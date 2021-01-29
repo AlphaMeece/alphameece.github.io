@@ -229,7 +229,7 @@ let baseSets = [
             ["いしゃ","Doctor"],
             ["かいしゃいん","Office worker"],
             ["こうこうせい","High school student"],
-            ["しゅふ","housewife"],
+            ["しゅふ","Housewife"],
             ["だいがくいんせい","Graduate student"],
             ["だいがくせい","College student"],
             ["べんごし","Lawyer"],
