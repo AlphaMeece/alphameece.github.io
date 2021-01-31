@@ -146,6 +146,152 @@ let baseSets = [
             ["ん","n"]
         ]
     },{
+        "title": "A-O",
+        "set": "Katakana",
+        "terms": [
+            ["ア","a"],
+            ["イ","i"],
+            ["ウ","u"],
+            ["エ","e"],
+            ["オ","o"]
+        ]
+    },{
+        "title": "Ka-Ko",
+        "set": "Katakana",
+        "terms": [
+            ["カ","ka"],
+            ["キ","ki"],
+            ["ク","ku"],
+            ["ケ","ke"],
+            ["コ","ko"]
+        ]
+    },{
+        "title": "Ga-Go",
+        "set": "Katakana",
+        "terms": [
+            ["ガ","ga"],
+            ["ギ","gi"],
+            ["グ","gu"],
+            ["ゲ","ge"],
+            ["ゴ","go"]
+        ]
+    },{
+        "title": "Sa-So",
+        "set": "Katakana",
+        "terms": [
+            ["サ","sa"],
+            ["シ","shi"],
+            ["ス","su"],
+            ["セ","se"],
+            ["ソ","so"]
+        ]
+    },{
+        "title": "Za-Zo",
+        "set": "Katakana",
+        "terms": [
+            ["ザ","za"],
+            ["ジ","ji"],
+            ["ズ","zu"],
+            ["ゼ","ze"],
+            ["ゾ","zo"]
+        ]
+    },{
+        "title": "Ta-To",
+        "set": "Katakana",
+        "terms": [
+            ["タ","ta"],
+            ["チ","chi"],
+            ["ツ","tsu"],
+            ["テ","te"],
+            ["ト","to"]
+        ]
+    },{
+        "title": "Da-Do",
+        "set": "Katakana",
+        "terms": [
+            ["ダ","da"],
+            ["ヂ","ji"],
+            ["ヅ","zu"],
+            ["デ","de"],
+            ["ド","do"]
+        ]
+    },{
+        "title": "Na-No",
+        "set": "Katakana",
+        "terms": [
+            ["ナ","na"],
+            ["ニ","ni"],
+            ["ヌ","nu"],
+            ["ネ","ne"],
+            ["ノ","no"]
+        ]
+    },{
+        "title": "Ha-Ho",
+        "set": "Katakana",
+        "terms": [
+            ["ハ","ha"],
+            ["ヒ","hi"],
+            ["フ","hu"],
+            ["ヘ","he"],
+            ["ホ","ho"]
+        ]
+    },{
+        "title": "Ba-Bo",
+        "set": "Katakana",
+        "terms": [
+            ["バ","ba"],
+            ["ビ","bi"],
+            ["ブ","bu"],
+            ["ベ","be"],
+            ["ボ","bo"]
+        ]
+    },{
+        "title": "Pa-Po",
+        "set": "Katakana",
+        "terms": [
+            ["パ","pa"],
+            ["ピ","pi"],
+            ["プ","pu"],
+            ["ペ","pe"],
+            ["ポ","po"]
+        ]
+    },{
+        "title": "Ma-Mo",
+        "set": "Katakana",
+        "terms": [
+            ["マ","ma"],
+            ["ミ","mi"],
+            ["ム","mu"],
+            ["メ","me"],
+            ["モ","mo"]
+        ]
+    },{
+        "title": "Ya-Yo",
+        "set": "Katakana",
+        "terms": [
+            ["ヤ","ya"],
+            ["ユ","yu"],
+            ["ヨ","yo"]
+        ]
+    },{
+        "title": "Ra-Ro",
+        "set": "Katakana",
+        "terms": [
+            ["ラ","ra"],
+            ["リ","ri"],
+            ["ル","ru"],
+            ["レ","re"],
+            ["ロ","ro"]
+        ]
+    },{
+        "title": "Wa,Wo,N",
+        "set": "Katakana",
+        "terms": [
+            ["ワ","wa"],
+            ["ヲ","wo"],
+            ["ン","n"]
+        ]
+    },{
         "title": "Hello's",
         "set": "Greetings",
         "terms": [
