@@ -251,12 +251,12 @@ let baseSets = [
         "title": "Suffixes",
         "set": "Lesson 1 Vocab",
         "terms": [
-            ["...ご","Language"],
-            ["...さい","Years old"],
-            ["...さん","Mr./Mrs."],
-            ["...じ","O' Clock"],
-            ["...じん","Person(Japanese Person)"],
-            ["...ねんせい","Year student(first-year student)"],
+            ["～ご","Language"],
+            ["～さい","Years old"],
+            ["～さん","Mr./Mrs."],
+            ["～じ","O' Clock"],
+            ["～じん","Person(Japanese Person)"],
+            ["～ねんせい","Year student(first-year student)"],
         ]
     },{
         "title": "Misc.",
@@ -284,8 +284,8 @@ let baseSets = [
             ["はたち","20 Years old"],
         ]
     },{
-        "title": "Numbers",
-        "set": "Lesson 1 Vocab",
+        "title": "Base",
+        "set": "Numbers",
         "terms": [
             ["ぜろ/れい","0"],
             ["いち","1"],
@@ -298,11 +298,52 @@ let baseSets = [
             ["はち","8"],
             ["きゅう","9"],
             ["じゅう","10"],
+        ]
+    },{
+        "title": "Hundreds",
+        "set": "Numbers",
+        "terms": [
             ["ひゃく","100"],
+            ["にひゃく","200"],
+            ["さんびゃく","300"],
+            ["よんひゃく","400"],
+            ["ごひゃく","500"],
+            ["ろっぴゃく","600"],
+            ["ななひゃく","700"],
+            ["はっぴゃく","800"],
+            ["きゅうひゃく","900"],
+        ]
+    },{
+        "title": "Thousands",
+        "set": "Numbers",
+        "terms": [
+            ["せん","1000"],
+            ["にせん","2000"],
+            ["さんぜん","3000"],
+            ["よんせん","4000"],
+            ["ごせん","5000"],
+            ["ろくせん","6000"],
+            ["ななせん","7000"],
+            ["はっせん","8000"],
+            ["きゅうせん","9000"],
+        ]
+    },{
+        "title": "Ten-Thousands",
+        "set": "Numbers",
+        "terms": [
+            ["いちまん","10000"],
+            ["にまん","20000"],
+            ["さんまん","30000"],
+            ["よんまん","40000"],
+            ["ごまん","50000"],
+            ["ろくまん","60000"],
+            ["ななまん","70000"],
+            ["はちまん","80000"],
+            ["きゅうまん","90000"],
         ]
     },{
         "title": "Minutes",
-        "set": "Lesson 1 Vocab",
+        "set": "Numbers",
         "terms": [
             ["いっぷん","1"],
             ["にふん","2"],
@@ -316,6 +357,84 @@ let baseSets = [
             ["きゅうふん","9"],
             ["じゅっぷん","10"],
             ["じっぷん","10"],
+        ]
+    },{
+        "title": "Words That Point",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["これ","This one"],
+            ["それ","That one"],
+            ["あれ","That one (over there)"],
+            ["どれ","Which one"],
+            ["この","This ..."],
+            ["その","That ..."],
+            ["あの","That ... (over there)"],
+            ["どの","Which ..."],
+            ["ここ","Here"],
+            ["そこ","There"],
+            ["あそこ","Over there"],
+            ["どこ","Where"],
+            ["だれ","Who"],
+        ]
+    },{
+        "title": "Food",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["おいしい","Delicious"],
+            ["さかな","Fish"],
+            ["とんかつ","Pork Cutlet"],
+            ["にく","Meat"],
+            ["メニュー","Menu"],
+            ["やさい","Vegetable"],
+        ]
+    },{
+        "title": "Things",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["えんぴつ","Pencil"],
+            ["かさ","Umbrella"],
+            ["かばん","Bag"],
+            ["くつ","Shoes"],
+            ["さいふ","Wallet"],
+            ["ジーンズ","Jeans"],
+            ["じしょ","Dictionary"],
+            ["じてんしゃ","Bicycle"],
+            ["しんぶん","Newspaper"],
+            ["Tシャツ","T-shirt"],
+            ["とけい","Watch/Clock"],
+            ["ノート","Notebook"],
+            ["ペン","Pen"],
+            ["ぼうし","Hat/Cap"],
+            ["ほん","Book"],
+        ]
+    },{
+        "title": "Places",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["きっさてん","Cafe"],
+            ["ぎんこう","Bank"],
+            ["トイレ","Toilet/Restroom"],
+            ["としょかん","Library"],
+            ["ゆうびにょく","Post Office"],
+        ]
+    },{
+        "title": "Money Matters",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["いくら","How much"],
+            ["～えん","... yen"],
+            ["たかい","Expensive/Hihh"],
+        ]
+    },{
+        "title": "Expressions",
+        "set": "Lesson 2 Vocab",
+        "terms": [
+            ["いらっしゃいませ","Welcome (to our store)"],
+            ["（～を）おねがいします","..., please"],
+            ["（～を）ください","Please give me ..."],
+            ["じゃあ","Then .../If that's the case ..."],
+            ["どうぞ","Please/Here it is"],
+            ["どうも","Thank you"],
         ]
     },
     /*{

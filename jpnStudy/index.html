@@ -59,6 +59,23 @@
                 </label>
                 <div>
                     <!--<a href="javascript:void(0)" class="deletebutton" onclick="deleteGroup(this.parentElement)">&times;</a>-->
+                    <button type="button" class="collapsible">Numbers</button>
+                </div>
+                <div class="content">
+                    <p onclick="changeSets(this, this.innerHTML)">Base</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Hundreds</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Thousands</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Ten-Thousands</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Minutes</p>
+                </div>
+            </div>
+            <div>
+                <label class="container">
+                    <input type="checkbox" onchange="changeSets(this, this.parentElement.parentElement.children[2], true)">
+                    <span class="checkmark"></span>
+                </label>
+                <div>
+                    <!--<a href="javascript:void(0)" class="deletebutton" onclick="deleteGroup(this.parentElement)">&times;</a>-->
                     <button type="button" class="collapsible">Lesson 1 Vocab</button>
                 </div>
                 <div class="content">
@@ -67,11 +84,41 @@
                     <p onclick="changeSets(this, this.innerHTML)">Occupations</p>
                     <p onclick="changeSets(this, this.innerHTML)">Family</p>
                     <p onclick="changeSets(this, this.innerHTML)">Suffixes</p>
-                    <p onclick="changeSets(this, this.innerHTML)">Numbers</p>
-                    <p onclick="changeSets(this, this.innerHTML)">Minutes</p>
                     <p onclick="changeSets(this, this.innerHTML)">Misc.</p>
                 </div>
             </div>
+            
+            <div>
+                <label class="container">
+                    <input type="checkbox" onchange="changeSets(this, this.parentElement.parentElement.children[2], true)">
+                    <span class="checkmark"></span>
+                </label>
+                <div>
+                    <button type="button" class="collapsible">Lesson 2 Vocab</button>
+                </div>
+                <div class="content">
+                    <p onclick="changeSets(this, this.innerHTML)">Words That Point</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Food</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Things</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Places</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Money Matters</p>
+                    <p onclick="changeSets(this, this.innerHTML)">Expressions</p>
+                </div>
+            </div>
+            <!--
+                <div>
+                    <label class="container">
+                        <input type="checkbox" onchange="changeSets(this, this.parentElement.parentElement.children[2], true)">
+                        <span class="checkmark"></span>
+                    </label>
+                    <div>
+                        <button type="button" class="collapsible"></button>
+                    </div>
+                    <div class="content">
+                        <p onclick="changeSets(this, this.innerHTML)"></p>
+                    </div>
+                </div>
+            -->
         </div>
         <span onclick="openSets()" class="openbutton">
             <div class="bar"></div>
