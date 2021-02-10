@@ -561,7 +561,7 @@ let baseSets = [
             ["ぎんこう","Bank"],
             ["トイレ","Toilet/Restroom"],
             ["としょかん","Library"],
-            ["ゆうびにょく","Post Office"],
+            ["ゆうびにきょく","Post Office"],
         ]
     },{
         "title": "Money Matters",
