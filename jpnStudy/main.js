@@ -250,6 +250,16 @@ function closeSets() {
     document.getElementById("studySets").style.width = "0";
 }
 
+function help() {
+    document.getElementById("help").style.display = "block";
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("help")) {
+        document.getElementById("help").style.display = "none"
+    }
+}
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 

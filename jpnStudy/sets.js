@@ -569,7 +569,7 @@ let baseSets = [
         "terms": [
             ["いくら","How much"],
             ["～えん","... yen"],
-            ["たかい","Expensive/Hihh"],
+            ["たかい","Expensive/High"],
         ]
     },{
         "title": "Expressions",
@@ -581,6 +581,134 @@ let baseSets = [
             ["じゃあ","Then .../If that's the case ..."],
             ["どうぞ","Please/Here it is"],
             ["どうも","Thank you"],
+        ]
+    },{
+        "title": "Counting Items",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["一つ","ひとつ"],
+            ["二つ","ふたつ"],
+            ["三つ","みっつ"],
+            ["四つ","よっつ"],
+            ["五つ","いつつ"],
+            ["六つ","むっつ"],
+            ["七つ","ななつ"],
+            ["八つ","やっつ"],
+            ["九つ","ここのつ"],
+            ["十","とお"],
+        ]
+    },{
+        "title": "Nouns",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["えいが","Movie"],
+            ["おんがく","Music"],
+            ["ざっし","Magazine"],
+            ["スポーツ","Sports"],
+            ["デート","Date(Romantic)"],
+            ["テニス","Tennis"],
+            ["テレビ","TV"],
+        ]
+    },{
+        "title": "Food and Drinks",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["アイスクリーム","Ice Cream"],
+            ["あさごはん","Breakfast"],
+            ["ひるごはん","Lunch"],
+            ["ばんごはん","Dinner"],
+            ["おさけ","Sake/Alcohol"],
+            ["おちゃ","Green Tea"],
+            ["コーヒー","Coffee"],
+            ["ハンバーガー","Hamburger"],
+            ["みず","Water"],
+        ]
+    },{
+        "title": "Places",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["いえ","House"],
+            ["うち","House(My Place)"],
+            ["がっこう","School"],
+        ]
+    },{
+        "title": "Time",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["あさ","Morning"],
+            ["あした","Tomorrow"],
+            ["いつ","When"],
+            ["きょう","Today"],
+            ["～ごろ","Around"],
+            ["こんばん","Tonight"],
+            ["しゅうまつ","Weekend"],
+            ["どようび","Saturday"],
+            ["にちようび","Sunday"],
+            ["まいにち","Every Day"],
+            ["まいばん","Every Night"],
+        ]
+    },{
+        "title": "U Verbs",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["いく","To Go"],
+            ["かえる","To Return"],
+            ["きく","To Listen/Hear"],
+            ["のむ","To Drink"],
+            ["はなす","To Speak/Talk"],
+            ["よむ","To Read"],
+        ]
+    },{
+        "title": "Ru Verbs",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["おきる","To Get Up"],
+            ["たべる","To Eat"],
+            ["ねる","To (Go To)Sleep"],
+            ["みる","To See/Look/Watch"],
+        ]
+    },{
+        "title": "Irregular Verbs",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["くる","To Come"],
+            ["する","To Do"],
+            ["べんきょうする","To Study"],
+        ]
+    },{
+        "title": "Adjectives",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["いい","Good"],
+            ["はやい","Early"],
+            ["たかい","Expensive"],
+            ["やすい","Cheap"],
+            ["おおきい","Big"],
+            ["ちいさい","Small"],
+            ["わるい","Bad"],
+            ["かっこいい","Cool"],
+            ["へん","Strange"],
+            ["べんり","Convenient"],
+            ["ふべん","Inconvenient"],
+        ]
+    },{
+        "title": "Adverbs",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["あまり～","Not Much"],
+            ["ぜんぜん～","Not At All"],
+            ["たいてい","Usually"],
+            ["ちょっと","A Little"],
+            ["ときどき","Sometimes"],
+            ["よく","Often/Much"],
+        ]
+    },{
+        "title": "Expressions",
+        "set": "Lesson 3 Vocab",
+        "terms": [
+            ["そうですね","That's Right/Let Me See"],
+            ["でも","But"],
+            ["どうですか","How About/How Is"],
         ]
     },
     /*{
