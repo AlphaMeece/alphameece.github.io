@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Wheel of Misfortune</title>
+  <style>
+        * {
+            color: white;
+            text-align: center;
+        }
+
+        input, button {
+            color: black;
+        }
+
+        body {
+            background-color: black;
+        }
+  </style>
+</head>
+<body onload="loaded()">
+  <h1>Wheel of Misfortune</h1>
+  <canvas id="canvas" onclick="spin()" height="500" width="500"></canvas>
+  
+  <div id="dataCollect">
+    <span id="names">
+      Student Names: <input type="text" id="studentNames" placeholder="Seperate With Commas"></input>
+    </span>
+    <br />
+    <span id="submit">
+      <button id="generate" onclick="doStuff()">Generate</button>
+      <button id="saveWheel" onclick="saveWheel()" disabled>Save Wheel</button>
+      <button id="removeSaved" onclick="removed()">Remove Saved Wheel</button>
+      <br />
+      <button id="savedWheel1" onclick="loadWheel(1)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel2" onclick="loadWheel(2)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel3" onclick="loadWheel(3)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel4" onclick="loadWheel(4)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel5" onclick="loadWheel(5)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel6" onclick="loadWheel(6)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel7" onclick="loadWheel(7)" class="hidden" disabled></button>
+      <br />
+      <button id="savedWheel8" onclick="loadWheel(8)" class="hidden" disabled></button>
+    </span>
+  </div>
+  <canvas id="WheelImage" height="500" style="visibility: hidden;" width="500"></canvas>
+  <script>
+      //Remove tediousness of document.getElementById("elementId")
+function d(elementId) {
+  return document.getElementById(elementId);
+}
+
+//Set canvas variable
+var c = d("canvas");
+//Set context
+var ctx = c.getContext("2d");
+
+//Define variables to remove c.height and c.width
+var h = c.height;
+var w = c.width;
+
+//Define Image source
+var wheel = new Image();
+
+//Create Array to hold student names + variable for initial string
+var names = [];
+var namesString = "";
+var chosen;
+
+//Create Angle
+var angle = 0;
+var spinning = false;
+var runs = 0;
+var tri = true;
+var going = true;
+
+//Trig variables
+var period;
+
+//Function to determine if a number is odd
+function isOdd(number) {
+  if(number % 2 == 1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//Function to convert degrees to radians
+function rad(angle) {
+  return Math.floor(angle*Math.PI/180*1000)/1000;
+}
+
+function deg(angle) {
+  return Math.floor(angle*180/Math.PI*1000)/1000;
+}
+
+//Simplifying Math.sin and Math.cos
+function sin(angle) {
+  return Math.sin(angle);
+}
+
+function cos(angle) {
+  return Math.cos(angle);
+}
+
+//Function to seperate the string into individual elements
+function seperate() {
+  names = [];
+  namesString = d("studentNames").value;
+  names = namesString.split(",");
+}
+
+//Function to do all the wheel stuff
+function doStuff() {
+  angle = 0;
+  seperate();
+  generateWheel();
+  setImageSource();
+}
+
+//Function to create the wheel after names have been input
+function generateWheel() {
+  d("saveWheel").disabled = false;
+  var canvas = d("WheelImage");
+  var context = canvas.getContext("2d");
+  context.clearRect(0, 0, w, h);
+  var numWedges = names.length;
+  var wedgeAngle = 360 / numWedges;
+  wedgeAngle = wedgeAngle * Math.PI / 180;
+  var currentAngle = 0;
+  var currentRun = 0;
+  var colors, name, height, width;
+  if(isOdd(numWedges)) {
+    colors = ["red", "white", "blue", "purple"];
+  } else {
+    colors = ["red", "white"];
+  }
+  context.font = "12pt Arial";
+  for(var i = 0; i < numWedges; i++) {
+    currentAngle += wedgeAngle;
+    context.beginPath();
+    context.fillStyle = colors[currentRun % colors.length];
+    context.arc(w / 2, h / 2, w / 2, currentAngle, currentAngle - wedgeAngle, true);
+    context.lineTo(w / 2, h / 2);
+    context.closePath()
+    context.fill();
+    context.beginPath();
+    context.save();
+    context.translate(w / 2, h / 2);
+    context.rotate(currentAngle - (wedgeAngle / 2));
+    name = names[i];
+    height = context.measureText(name).height;
+    width = context.measureText(name).width;
+    context.fillStyle = "black";
+    context.translate(0, height/2);
+    context.fillText(name, w / 4 - width / 2, 0);
+    context.restore();
+    context.closePath();
+    currentRun += 1;
+  }
+}
+
+//Define a function to clear the canvas
+function clear() {
+  ctx.clearRect(0, 0, w, h);
+}
+
+//Spin function
+function spin() {
+  if(!going) {
+    clear();
+    going = true;
+    drawWheel(angle);
+    drawTriangle();
+    draw();
+    return;
+  }
+  spinning = true;
+  period = Math.floor(Math.PI*Math.random()*2000)/1000;
+}
+
+//Function to convert the canvas to an image
+function setImageSource() {
+  var canvas = d("WheelImage");
+  var context = canvas.getContext("2d");
+  wheel.src = canvas.toDataURL();
+}
+
+//Cosine function
+function cosWave(xVal) {
+  return (2*cos(xVal/period)+2);
+}
+
+//Draw final
+function drawChoice() {
+  going = false;
+  ctx.beginPath();
+  angle = 0;
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, w, h);
+  ctx.fillStyle = "white";
+  ctx.font = ("20pt Arial");
+  var height = parseInt(ctx.font);
+  var width = ctx.measureText(chosen).width;
+  ctx.fillText(chosen, w/2-width/2, h/2-height/2);
+  ctx.closePath();
+}
+
+//Set main draw loop function
+function draw() {
+  clear();
+  if(spinning) {
+    if(Math.floor(cosWave(runs)) === 0) {
+      runs = 0;
+      spinning = false;
+      getChosen();
+      return;
+    }
+    angle += cosWave(runs);
+    
+    runs += Math.PI/100;
+  }
+  drawWheel(angle);
+  if(tri) drawTriangle();
+  
+  if(going) requestAnimationFrame(draw);
+}
+
+function clear() {
+  ctx.clearRect(0, 0, w, h);
+}
+
+//Get the chosen person
+function getChosen() {
+  var numAngles = 360/names.length;
+  var land = angle % 360;
+  var choice = ((270-land)/numAngles);
+  if(choice < 0) {
+    choice = ((270 + (360 - land))/numAngles);
+  }
+  chosen = names[Math.floor(choice)];
+  drawChoice();
+}
+
+//Create the wheel
+function drawWheel(angle) {
+  ctx.beginPath();
+  ctx.save();
+  ctx.translate(w/2, h/2);
+  ctx.rotate(angle*Math.PI/180);
+  ctx.drawImage(wheel, -w/2, -h/2);
+  ctx.restore();
+  ctx.closePath();
+}
+
+//Create choosing triangle
+function drawTriangle() {
+  ctx.fillStyle = "black";
+  ctx.beginPath();
+  ctx.moveTo(w/2-5,0);
+  ctx.lineTo(w/2+5,0);
+  ctx.lineTo(w/2,5);
+  ctx.lineTo(w/2-5,0);
+  ctx.fill();
+  ctx.closePath();
+}
+
+//Dealing with saving and loading wheels
+function get(item) {
+  return localStorage.getItem(item);
+}
+
+function set(name, item) {
+  localStorage.setItem(name, item);
+}
+
+function saveWheel() {
+  if(get("wheel1") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel1", (c.toDataURL()).toString());
+    set("wheel1Names", names.toString());
+    set("wheel1Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel2") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel2", (c.toDataURL()).toString());
+    set("wheel2Names", names.toString());
+    set("wheel2Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel3") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel3", (c.toDataURL()).toString());
+    set("wheel3Names", names.toString());
+    set("wheel3Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel4") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel4", (c.toDataURL()).toString());
+    set("wheel4Names", names.toString());
+    set("wheel4Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel5") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel5", (c.toDataURL()).toString());
+    set("wheel5Names", names.toString());
+    set("wheel5Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel6") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel6", (c.toDataURL()).toString());
+    set("wheel6Names", names.toString());
+    set("wheel6Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel7") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel7", (c.toDataURL()).toString());
+    set("wheel7Names", names.toString());
+    set("wheel7Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  } else if(get("wheel8") == null) {
+    tri = false;
+    drawWheel(0);
+    set("wheel8", (c.toDataURL()).toString());
+    set("wheel8Names", names.toString());
+    set("wheel8Image", c.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    tri = true;
+  }
+  loaded();
+}
+
+function remove(item) {
+  localStorage.removeItem(item);
+}
+
+function removed() {
+  var choice = prompt("Which wheel, 1, 2, 3, 4, 5, 6, 7, 8, or ALL");
+  if(choice == "ALL" || choice == "all" || choice == "All") {
+    remove("wheel1");
+    remove("wheel1Image");
+    remove("wheel1Names");
+    remove("wheel2");
+    remove("wheel2Image");
+    remove("wheel2Names");
+    remove("wheel3");
+    remove("wheel3Image");
+    remove("wheel3Names");
+    remove("wheel4");
+    remove("wheel4Image");
+    remove("wheel4Names");
+    remove("wheel5");
+    remove("wheel5Image");
+    remove("wheel5Names");
+    remove("wheel6");
+    remove("wheel6Image");
+    remove("wheel6Names");
+    remove("wheel7");
+    remove("wheel7Image");
+    remove("wheel7Names");
+    remove("wheel8");
+    remove("wheel8Image");
+    remove("wheel8Names");
+  } else {
+    remove("wheel" + choice);
+    remove("wheel" + choice + "Image");
+    remove("wheel" + choice + "Names");
+  }
+  loaded();
+}
+
+function loaded() {
+  if(localStorage.getItem("wheel1") != null) {
+    d("savedWheel1").innerHTML = "<img src='" + get("wheel1Image") + "' height='300' width='300'></img>";
+    d("savedWheel1").disabled = false;
+    d("savedWheel1").style.visibility = "visible";
+  } else {
+    d("savedWheel1").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel2") != null) {
+    d("savedWheel2").innerHTML = "<img src='" + get("wheel2Image") + "' height='300' width='300'></img>";
+    d("savedWheel2").disabled = false;
+    d("savedWheel2").style.visibility = "visible";
+  } else {
+    d("savedWheel2").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel3") != null) {
+    d("savedWheel3").innerHTML = "<img src='" + get("wheel3Image") + "' height='300' width='300'></img>";
+    d("savedWheel3").disabled = false;
+    d("savedWheel3").style.visibility = "visible";
+  } else {
+    d("savedWheel3").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel4") != null) {
+    d("savedWheel4").innerHTML = "<img src='" + get("wheel4Image") + "' height='300' width='300'></img>";
+    d("savedWheel4").disabled = false;
+    d("savedWheel4").style.visibility = "visible";
+  } else {
+    d("savedWheel4").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel5") != null) {
+    d("savedWheel5").innerHTML = "<img src='" + get("wheel5Image") + "' height='300' width='300'></img>";
+    d("savedWheel5").disabled = false;
+    d("savedWheel5").style.visibility = "visible";
+  } else {
+    d("savedWheel5").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel6") != null) {
+    d("savedWheel6").innerHTML = "<img src='" + get("wheel6Image") + "' height='300' width='300'></img>";
+    d("savedWheel6").disabled = false;
+    d("savedWheel6").style.visibility = "visible";
+  } else {
+    d("savedWheel6").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel7") != null) {
+    d("savedWheel7").innerHTML = "<img src='" + get("wheel7Image") + "' height='300' width='300'></img>";
+    d("savedWheel7").disabled = false;
+    d("savedWheel7").style.visibility = "visible";
+  } else {
+    d("savedWheel7").style.visibility = "hidden";
+  }
+  if(localStorage.getItem("wheel8") != null) {
+    d("savedWheel8").innerHTML = "<img src='" + get("wheel8Image") + "' height='300' width='300'></img>";
+    d("savedWheel8").disabled = false;
+    d("savedWheel8").style.visibility = "visible";
+  } else {
+    d("savedWheel8").style.visibility = "hidden";
+  }
+}
+
+function loadWheel(num) {
+  switch (num){
+    case 1:
+      names = get("wheel1Names").split(",");
+      wheel.src = get("wheel1");
+      break;
+    case 2:
+      names = get("wheel2Names").split(",");
+      wheel.src = get("wheel2");
+      break;
+    case 3:
+      names = get("wheel3Names").split(",");
+      wheel.src = get("wheel3");
+      break;
+    case 4:
+      names = get("wheel4Names").split(",");
+      wheel.src = get("wheel4");
+      break;
+    case 5:
+      names = get("wheel5Names").split(",");
+      wheel.src = get("wheel5");
+      break;
+    case 6:
+      names = get("wheel6Names").split(",");
+      wheel.src = get("wheel6");
+      break;
+    case 7:
+      names = get("wheel7Names").split(",");
+      wheel.src = get("wheel7");
+      break;
+    case 8:
+      names = get("wheel8Names").split(",");
+      wheel.src = get("wheel8");
+      break;
+  }
+}
+
+draw();
+  </script>
+</body>
+</html>
