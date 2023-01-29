@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+        <div class="nav-bar">
+            <!-- Logo in the long run, temporarily plaintext -->
+            <span>Desert Classic Mustangs</span>
+            <div class="nav-buttons-container">
+                <button class="nav-button active" onclick="changeTab(event, 'about-us')">About Us</button>
+                <button class="nav-button" onclick="changeTab(event, 'services')">Services</button>
+                <button class="nav-button" onclick="changeTab(event, 'gallery')">Gallery</button>
+                <button class="nav-button" onclick="changeTab(event, 'faq')">FAQ</button>
+                <button class="nav-button" onclick="changeTab(event, 'contact-us')">Contact Us</button>
+                <button class="accordion-button" onclick="toggleAccordion(event, this)">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </button>
+            </div>
+            <div id="collapsed-buttons">
+                <button class="collapsed-button" onclick="changeTab(event, 'about-us')">About Us</button>
+                <button class="collapsed-button" onclick="changeTab(event, 'services')">Services</button>
+                <button class="collapsed-button" onclick="changeTab(event, 'gallery')">Gallery</button>
+                <button class="collapsed-button" onclick="changeTab(event, 'faq')">FAQ</button>
+                <button class="collapsed-button" onclick="changeTab(event, 'contact-us')">Contact Us</button>
+            </div>
+        </div>
+        <div id="site-content">
+            <div id="about-us" class="content-block">
+                <h1>About Us</h1>
+                <h3>Who we are</h3>
+                <p>
+                    If you notice most builders have this section where they brag about everything you want to hear. Talk about all the trophy's they have won, all the cool builds, all the cars they have sent to Barrett Jackson and so on.
+                    For us, none of that. We are hard core workers that love what we do and love the challenge.  We have turned down 2 offers to do reality shows.  Get serious!  We are not putting on a circus act and listening to the directors telling us what the TV viewers want to see.  No showroom here to impress people, no clean floors, none of that. Its noisy, dirty, parts are all over, hammers pounding, yelling and motors screaming to go out in public! 
+                </p>    
+                <br />
+                <h3>This is a workshop not a showshop</h3>
+                <p>
+                    It's amazing when we get someone that comes to us about getting down to business because when they see what we're working on and all the clutter they are like a kid in a candy store! And they are in disbelief when they see a totalled out rust bucket that we can fix!  That's it, nothing else to talk about in this category.
+                </p>
+                <br />
+            </div>
+            <div id="services" class="content-block hidden">
+                <h1>Services</h1>
+                <p>
+                    If you have a project car you want us to work on let us know what you need.   From floor replacement to full restorations we offer full service. We have 2 frame tables that we bolt  a car on and it stays bolted on the table until we're done with replacing sheet metal or frame sections.  We do repairs correctly so you never see the previous damage. For more details, see the Services tab.
+                </p>
+                <div class="services-box">
+                    <div class="service-button">
+                        <p>Frame Repair</p>
+                        <image src="./assets/FrameRepair/FrameRepair1.JPEG" onclick="imageModal(event, 'FrameRepair')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Custom Exhaust</p>
+                        <image src="./assets/CustomExhaust/CustomExhaust1.JPEG" onclick="imageModal(event, 'CustomExhaust')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Engine Rebuilds</p>
+                        <image src="./assets/EngineRebuilds/EngineRebuilds1.JPEG" onclick="imageModal(event, 'EngineRebuilds')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Full Restorations</p>
+                        <image src="./assets/FullRestorations/IMG_0088.JPEG" onclick="imageModal(event, 'FullRestorations')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Maintenance</p>
+                        <image src="./assets/Maintenance/IMG_2717.JPEG" onclick="imageModal(event, 'Maintenance')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Restomods</p>
+                        <image src="./assets/Restomods/Restomods1.JPEG" onclick="imageModal(event, 'Restomods')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Paint/Body</p>
+                        <image src="./assets/PaintBody/PaintBody1.JPEG" onclick="imageModal(event, 'PaintBody')" class="service-image" />
+                    </div>
+                    <div class="service-button">
+                        <p>Custom Bronco Frames</p>
+                        <image src="./assets/CustomBronco/CustomBronco1.JPEG" onclick="imageModal(event, 'CustomBronco')" class="service-image" />
+                    </div>
+                </div>
+            </div>
+            <div id="gallery" class="content-block hidden">
+                <h1>Gallery</h1>
+                <div id="image-gallery">
+                    <image src="./assets/CustomBronco/CustomBronco1.JPEG">
+                    <image src="./assets/CustomBronco/CustomBronco2.JPEG">
+                    <image src="./assets/CustomBronco/CustomBronco3.JPEG">
+                    <image src="./assets/CustomBronco/CustomBronco4.JPEG">
+                    <image src="./assets/CustomBronco/CustomBronco5.JPEG">
+                    <image src="./assets/CustomExhaust/CustomExhaust1.JPEG">
+                    <image src="./assets/CustomExhaust/CustomExhaust2.JPEG">
+                    <image src="./assets/CustomExhaust/CustomExhaust3.JPEG">
+                    <image src="./assets/EngineRebuilds/EngineRebuilds1.JPEG">
+                    <image src="./assets/EngineRebuilds/EngineRebuilds2.JPEG">
+                    <image src="./assets/EngineRebuilds/EngineRebuilds3.JPEG">
+                    <image src="./assets/EngineRebuilds/EngineRebuilds4.JPEG">
+                    <image src="./assets/FrameRepair/FrameRepair1.JPEG">
+                    <image src="./assets/FrameRepair/FrameRepair2.JPEG">
+                    <image src="./assets/FrameRepair/FrameRepair3.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0088.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0089.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0090.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0095.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0097.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0102.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0129.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0131.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0135.JPEG">
+                    <image src="./assets/FullRestorations/IMG_0137.JPEG">
+                    <image src="./assets/FullRestorations/IMG_3606.JPEG">
+                    <image src="./assets/FullRestorations/IMG_3607.JPEG">
+                    <image src="./assets/FullRestorations/IMG_4403.JPEG">
+                    <image src="./assets/FullRestorations/IMG_4502.JPEG">
+                    <image src="./assets/FullRestorations/IMG_4504.JPEG">
+                    <image src="./assets/FullRestorations/IMG_4505.JPEG">
+                    <image src="./assets/FullRestorations/IMG_4509.JPEG">
+                    <image src="./assets/Maintenance/IMG_2717.JPEG">
+                    <image src="./assets/Maintenance/IMG_2718.JPEG">
+                    <image src="./assets/Maintenance/IMG_2719.JPEG">
+                    <image src="./assets/Maintenance/IMG_2871.JPEG">
+                    <image src="./assets/PaintBody/PaintBody1.JPEG">
+                    <image src="./assets/PaintBody/PaintBody2.JPEG">
+                    <image src="./assets/PaintBody/PaintBody3.JPEG">
+                    <image src="./assets/Restomods/Restomods1.JPEG">
+                    <image src="./assets/Restomods/Restomods2.JPEG">
+                    <image src="./assets/Restomods/Restomods3.JPEG">
+                </div>
+            </div>
+            <div id="contact-us" class="content-block hidden">
+                <h1>Contact Us</h1>
+                <p>Desert Classic Mustangs LLC</p>
+                <p>Mustangs and Muscle Cars</p>
+                <p>123-456-7890</p>
+                <p>Scottsdale, Arizona USA</p>
+                <br />
+                <p>EMAIL</p>
+                <p>email@email.com</p>
+            </div>
+            <div id="faq" class="content-block hidden">
+                <h1>FAQ</h1>
+                <pre>
+Q; Does the car come with a title and vin number?    
+A; Unlike the Dynacorn shell the car still retains the original vin number and clean title from the coupe donor car. There are no registration problems.
+
+Q; What about finding replacement parts, interior panels and glass?   
+A; All major Mustang supply parts houses carry everything you need to build the shell and many companies offer updated mods to make your car into a muscle performance machine! You can buy all new parts now and not having to use old parts!
+
+Q; Can you tell by looking at the car it use to be a coupe?    
+A; No not from the outside, sitting side by side an expert could not tell unless you look at the vin, title or look at the modified inner steel structures. From Ford there was only 1 roof support and the conversions have 2 roof supports and there is a structural support that connects from the inner door jam to the inner wheel house. The original Mustangs did not have this. There are structural supports from the inner wheel house to the roof. These are stronger than Ford had used. This will help overall with less body stress and flex. If your building a performance car this is important. On the DesertClassicMustangs web site there are interior pictures that show the difference. The old Camaros had the supports but what was Ford thinking?
+
+Q; Can you convert my own coupe?   
+A; Yes there are 2 ways to do this, We can do a partial conversion This can be done if you send us the car with every part stripped off the car, take out all the glass, interior, lights, molding and suspension front and rear. The car must be put on a dolly so it can be loaded on a transport. The cost may not be the same to convert your car because if there is extensive damage you will be charged for it. Example if your shock towers , sub frame or other major supports have rust damage this could affect the final cost. Also when you figure in the transport cost it will be cheaper to buy the conversion Mustang.
+
+Q; When you build the shell can you do some extra mods to the car?   
+A; Yes if you want shock towers to accommodate a larger motor , sub frame connectors, suspension, or other modifications this can be done. Anything can be done.
+
+Q; What does shipping cost to go to Fort Meyers, Florida?    
+A; Google car transport and there are many sites that offer all in one multiple quotes from different companies. This will give you an ideal. We work with a company that will beat competitor's price up to $300 cheaper. Recently a car was shipped to that area for $850 but with the unstable gas prices if could affect transport cost in the future.
+
+Q: Do you have any distributors overseas?   
+A; Yes, if you live in South Africa there is a distributor in Durban which is on the east coast. The company is offering a complete car for sale with a new 4.6 3 v motor and a 5 speed. The car is finished with a right hand drive.  In time there will be other distributors available. Our plans are to expand into Europe and Australia.
+
+Q; How many of these conversions have been built?   
+A; As of June 2009 over 100 have been built. This does not include the Eleanor Style mustangs. The experience is priceless and the quality is excellent!
+
+Q; On the Eleanor's can you build them with a larger motor that has 500 horse power or more? And can you change the body style and do other different custom options?   
+A; Show me the money honey and anything can be built!
+
+Q; I was on your DesertClassicMustang website and on your Future Mustang page you have a Extreme Mustang project. Is it a rumor or fact that your developing an old style fastback mustang that reaches 0-60 mph is less than 4 seconds?   
+A; ……………………..It's already been proven and can be done, 2 different motors will be offered, the first has 300 horse power, 0-60 estimated 3.6 seconds with an estimated 1,000 ft. lbs. of torque and the second motor is approximate 650 horse power, 0-60 in 3.2 seconds and estimated 2,000 ft. lbs of torque. Now put your eyeballs back into their socket because this will set you back a minimum of a $100,000 and with the larger motor will be around $120,000. The rumor is that you can afford one. No other details can be release at this time. You're on a need to know basis.
+
+Q; If I send you my convertible Mustang can you restore it. It has a couple of the sub frames that have rust and need to be replaced. I can restore the car to a certain point but I'm worried if I don't put the new sub frame in the correct place with will throw things off.   
+A; The car is placed on a frame machine so everything lines up. Using templates and measurements new parts are installed like what the factory did. When the conversions are built it is done the same way so everything lines up. People don't realize it but there is no difference between the coupes and fastbacks, the wheel houses and the door jams are in the identical place. So the coupe quarter panel and the fastback quarter panel weld to the same areas. Don't try this at home! ! ! ! ! !
+
+Q; When your building the conversions and you find a rusted damaged area do you patch it or replace the panel.   
+A; No corners are cut, the whole panel is replaced. When the floor pan is bad it is cut out and replaced with a convertible floor pan and the seat platforms are 1 piece. The pan and seat platform combination make the structure stronger. In some areas a small hole or 2 is found then that is properly welded.
+
+Q: Is the converted car full of bondo?   
+A; There is four corners of the roof and 2 areas on the filler panel that need to be filled. We suggest that your body shop take care of these areas or for an additional charge we will do it with lead and bondo.  The  factory  welded  the roof  in 2 areas where it meets the quarter panel and also at the top of the windshield pillars. The factory spot welded these areas and then filled them with lead and bondo.  Other than these areas you may need to modify the trunk lid or doors. The parts we use are Dynacorn and the panels are very straight but to be showroom perfect they may need attention. We only weld on the panels and line up everything as best as possible.
+
+Q; Is the conversion paint ready?   
+A; Very close. After the car has been media blasted a black epoxy coating is sprayed everywhere to protect the car from rust. Under side, inside and outside. The body will need a light sanding and it is ready for paint.  The body gaps may need attention but the newer style Dynacorn panels we use are better now than they use to be.
+
+Q; Does the car come with fenders and a hood?   
+A; There is an extra cost for the parts. To complete the body you will need a hood, front and rear valance, fenders and headlight buckets. These can be installed for and an extra charge. There are different hoods that can be ordered ,  a flat hood or the turn signal hood. These don't come with the car because they are cheap to purchase and easy to install. The price of the conversion is affordable but if you want the extra parts that is not a problem.
+
+<strong>When shipping shells out of the country we will crate them for an additional charge.</strong>
+
+<strong>Shipping within the U.S.A. we will install a roller frame under the shell for easy transport. There will be an additional charge of $650.00 for this service</strong>
+
+<strong>We can help you with shipping quotes</strong>
+
+You can also pick-up these shells at our Scottsdale , Arizona  location.
+- This is  pick up center ONLY.
+- We DO NOT GIVE shop tours.
+
+Please allow 3-8 weeks for your order to be processed
+
+Payment Methods:
+Bank wire.
+Cash (In person Only)
+                </pre>
+            </div>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>
