@@ -94,8 +94,8 @@ body {
     width: 100%;
     border: none;
     color: white;
-	font-size: 40px;
-    padding: 20px 0;
+	font-size: 20px;
+    padding: 5px 0;
 }
 
 .collapsed-button:hover {
@@ -301,4 +301,8 @@ pre {
     #site-content > div > p, #site-content > div > pre {
         font-size: 15px;
     }
+	
+	.nav-bar > span {
+		font-size: 25px;
+	}
 }
