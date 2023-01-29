@@ -262,6 +262,10 @@ pre {
     #site-content > div > p, #site-content > div > pre {
         font-size: 15px;
     }
+	
+	.services-box {
+		grid-template-columns: repeat(2, 1fr);
+	}
 }
 
 @media (max-width: 600px) {
@@ -284,6 +288,10 @@ pre {
 	
 	.nav-bar > span {
 		font-size: 30px;
+	}
+	
+	.services-box {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
@@ -308,5 +316,9 @@ pre {
 	
 	.nav-bar > span {
 		font-size: 25px;
+	}
+	
+	.services-box {
+		grid-template-columns: repeat(1, 1fr);
 	}
 }
