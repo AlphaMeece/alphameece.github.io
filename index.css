@@ -281,6 +281,10 @@ pre {
     #site-content > div > p, #site-content > div > pre {
         font-size: 15px;
     }
+	
+	.nav-bar > span {
+		font-size: 30px;
+	}
 }
 
 @media (max-width: 400px) {
